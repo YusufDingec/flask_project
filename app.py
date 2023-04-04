@@ -22,12 +22,6 @@ credentials = {
 
 }
 
-# @app.route('/users/<username>', methods=["GET"])
-# def get_endpoint(username):
-#     passwd = request.headers.get("Authorization")   THIS FOR AUTHORIZATION
-#     if username == credentials['user'] and passwd == credentials['password']:
-#         return credentials,200
-
 
 @app.route('/users/', methods=["GET"])
 def get_endpoint():
@@ -39,7 +33,6 @@ def get_endpoint():
         kullanicilar.append(result[i]["user"])
     for m in range(len(result)):
         sifreler.append(result[m]["password"])
-
     # return render_template('deneme.html', title='Welcome', kullanicilar=kullanicilar, sifreler = sifreler)
     return jsonify(msg="success", result=result), 200
 
@@ -53,44 +46,6 @@ def get_endpoint2():
         kullanicilar.append(result[i]["user"])
 
     return render_template('deneme.html', title='Welcome', kullanicilar=kullanicilar)
-
-# @app.route('/users/<y>', methods=["POST"])
-# def post_endpoint(y):
-#     credentials['user2'] = request.get_json()['yeniuser']
-#     # db.firstcollection.insert_one(credentials)
-#     credentials_backup = credentials
-
-#     result = list(user.find({"user1":"yusuf"},{"_id":0}))
-#     print(credentials)
-#     return jsonify(msg="success", result= result) ,200
-
-
-# @app.route('/users/<enteredname>', methods=['DELETE'])
-# def delete_user(enteredname):
-#     deleted = user.delete_many({"user": enteredname})
-#     deletedcount = deleted.deleted_count
-#     if deletedcount == 0:
-#         return jsonify('öyle biri yok'), 200
-#     return render_template('deneme.html', title='Welcome', enteredname=enteredname)
-#     return jsonify({'silinen isim:': enteredname}), 200
-
-
-# @app.route('/users/<y>', methods=["POST"])
-# def post_endpoint(y):
-#     data = request.get_json()
-#     # credentials = {
-#     #     "user":data['yeniuser'],
-#     #     "password":data['yenipassword'],
-#     # }
-#     # credentials['user'] = request.get_json()['yeniuser']
-#     # credentials['password'] = request.get_json()['yenipassword']
-#     # credentials_backup = credentials
-#     # print(credentials_backup)
-#     user.insert_one({"user": data['yeniuser'],
-#                     "password": data['yenipassword']})
-#     result = list(user.find({}, {"_id": 0}))
-#     # print(credentials)
-#     return jsonify(msg="success", result=result),
 
 
 @app.route('/add-user', methods=['POST'])
