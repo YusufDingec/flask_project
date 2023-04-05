@@ -5,7 +5,7 @@ import pymongo
 
 from flask import Flask, request, jsonify, render_template
 
-a = "mongodb+srv://yusufd:3yhM41JBmb85Klpu@cluster0.quv78ie.mongodb.net/test"
+a = "mongodb+srv://"
 
 app = Flask(__name__)
 client = MongoClient(a)
